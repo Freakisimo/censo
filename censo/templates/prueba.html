@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% block section %}
+
+{% for item in lista %}
+	{% if item.sexo = 1 %}
+		Bienvenido
+	{% else %}{% if item.sexo = 2 %}
+		Bienvenida
+	{% endif %}{% endif %}
+	{{item.nombre|add:" "}}{{item.ape_paterno|add:" "}}{{item.ape_materno}}
+{% endfor %}
+<nav>
+	<ul id="menu">
+		<li id="inicio"><a href="#">Inicio</a></li>
+		<li id="anualidades"><a href="#">Anualidades</a></li>
+		<li id="cursos"><a href="#">Cursos</a></li>
+		<li id="promociones"><a href="#">Promociones</a></li>
+		<li id="salir"><a href="#">Salir</a></li>
+	</ul>
+</nav>
+
+<section id="submenu">
+	<article id="inicio">
+		<ul>
+			<li><a href="#">Informacion general</a></li>
+			<li><a href="#">Direccion</a></li>
+			<li><a href="#">Contacto</a></li>
+			<li><a href="#">Afiliacion</a></li>
+		</ul>
+	</article>
+	<article id="anualidades">
+		<ul>
+			<li><a href="#">Status</a></li>
+			<li><a href="#">Consulta tus pagos</a></li>
+			<li><a href="#">Contacta a tu filial</a></li>
+			<li><a href="#"></a></li>
+		</ul>
+	</article>
+	<article id="cursos">
+		<ul>
+			<li><a href="#">Cusro anual de algo</a></li>
+			<li><a href="#">Cusro anual de algo mas</a></li>
+			<li><a href="#">Asistencia</a></li>
+			<li><a href="#"></a></li>
+		</ul>
+	</article>
+	<article id="promociones">
+		<ul>
+			<li><a href="#">Anualidades</a></li>
+			<li><a href="#">Cursos</a></li>
+			<li><a href="#">Paquetes</a></li>
+			<li><a href="#"></a></li>
+		</ul>
+	</article>
+</section>
+
+{% endblock %}

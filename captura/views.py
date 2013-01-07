@@ -11,13 +11,9 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponse,HttpResponseRedirect
 from django.db.models import Count
 from django.template.context import RequestContext
-
-#def listas(request):
-    #template = 'prueba.html' #nombre de la plantilla
-    #also = QryMantto1.objects.values('n_also').annotate(Total=Count('n_also'))
-    #fecha = QryMantto1.objects.values('fecha_captura').annotate(Total=Count('fecha_captura'))
-    #lista = {'alsos':also,'fechas':fecha} #Asignar resultados a la lista para 'render_to_response'
-    #return render_to_response(template,lista)#Enviar parametros al 'render_to_response'
+from django.db.models import Q
+from django.views.decorators.csrf import csrf_exempt
+#from django.views.decorators.csrf import csrf_protect
 
 def Medicos(request):
 	if request.method == 'POST':
@@ -27,6 +23,22 @@ def Medicos(request):
 			return HttpResponseRedirect('/')
 	else:
 		form = MedicosNuevos()
-
 	#Enviar parametros al 'render_to_response'
 	return render_to_response('medicos.html', context_instance=RequestContext(request,{'form': form}))
+
+@csrf_exempt
+def Login(request):
+	template = 'prueba.html' #nombre de la plantilla
+	u = request.POST['usuario']
+	p = request.POST['password']
+	cedula = Permisos.objects.all().filter(usuario=u,clave=p)
+	elementos = Tbl1Generales.objects.all().filter(cedula=cedula)
+	if len(elementos) > 0:
+		lista = {'lista':elementos} #Asignar resultados a la lista para 'render_to_response'
+		return render_to_response(template,lista)#Enviar parametros al 'render_to_response'
+	else:
+		return HttpResponseRedirect('/')
+
+def FormLogin(request):
+	template = 'login.html' #nombre de la plantilla
+	return render_to_response(template)

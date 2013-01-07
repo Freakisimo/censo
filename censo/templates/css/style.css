@@ -1,0 +1,21 @@
+body
+{
+	background-color: rgba(234,200,123, 0.1);
+}
+nav
+{
+	width: 100%;
+}
+nav ul li
+{
+	vertical-align: top;
+	display: inline-block;
+}
+nav ul li a
+{
+	text-decoration: none;
+}
+#menus a
+{
+	text-decoration: none;
+}

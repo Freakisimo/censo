@@ -10,6 +10,8 @@ urlpatterns = patterns('',
     # url(r'^censo/', include('censo.foo.urls')),
 
     url(r'^nuevo_medico/', 'captura.views.Medicos'),
+    url(r'^$', 'captura.views.FormLogin'),
+    url(r'^login', 'captura.views.Login'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
 	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -40,6 +40,13 @@ class Filial(models.Model):
     class Meta:
         db_table = u'filial'
 
+class Login(models.Model):
+    usuario = models.CharField(max_length=30)
+    pass_field = models.CharField(max_length=24, db_column='pass') # Field renamed because it was a Python reserved word.
+    cedula = models.ForeignKey(Tbl1Generales, primary_key=True, db_column='cedula')
+    class Meta:
+        db_table = u'login'
+
 class Tbl1Generales(models.Model):
     cedula = models.IntegerField(primary_key=True)
     id_socio = models.CharField(max_length=21, blank=True)

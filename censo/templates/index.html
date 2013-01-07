@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        {% load static %}
+        {% get_static_prefix as STATIC_PREFIX %}
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+
+        <link rel="stylesheet" href="{{ STATIC_PREFIX }}css/style.css" />
+
+        <script src="{{ STATIC_PREFIX }}js/jquery.js"></script>
+        <script src="{{ STATIC_PREFIX }}js/censo.js"></script>
+
         <title>Censo</title>      
     </head>
     <body>       
 		<header>				
 		</header>
-		
-		
 		{% block section %}
 		{% endblock %}
     </body>

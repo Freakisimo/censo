@@ -134,3 +134,10 @@ class Tbl6Cursos(models.Model):
     asistencia = models.IntegerField(null=True, blank=True)
     class Meta:
         db_table = u'tbl6_cursos'
+
+class Permisos(models.Model):
+    usuario = models.CharField(max_length=30)
+    clave = models.CharField(max_length=24) # Field renamed because it was a Python reserved word.
+    cedula = models.ForeignKey(Tbl1Generales, primary_key=True, db_column='cedula')
+    class Meta:
+        db_table = u'permisos'
