@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% load dajaxice_templatetags %}
+{% block section %}
+
+<script type="text/javascript">
+	function my_js_callback(data){
+	    alert(data.message);
+		}
+</script>
+
+{% for item in lista %}
+	{% if item.sexo = 1 %}
+		Bienvenido
+	{% else %}{% if item.sexo = 2 %}
+		Bienvenida
+	{% endif %}{% endif %}
+	{{item.nombre|add:" "}}{{item.ape_paterno|add:" "}}{{item.ape_materno}}
+{% endfor %}
+
+<nav>
+	<ul id="menu">
+		<li id="perfil"><a href="perfil">Perfil</a></li>
+		<li id="anualidades"><a href="anualidades">Anualidades</a></li>
+		<li id="cursos"><a href="cursos">Cursos</a></li>
+		<li id="promociones"><a href="promociones">Promociones</a></li>
+		<li id="salir"><a href="salir">Salir</a></li>
+	</ul>
+</nav>
+
+<button onclick="{{ STATIC_PREFIX }}Dajaxice.example.sayhello(my_js_callback);">Prueba</button>
+	
+{% endblock %}
