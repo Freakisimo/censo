@@ -78,13 +78,23 @@ class TipoPago(models.Model):
 
 class Tbl1Generales(models.Model):
     cedula = models.IntegerField(primary_key=True)
+    cedula_mi = models.IntegerField(primary_key=True)
+    en_tramite = models.CharField(max_length=2,blank=True)
     id_socio = models.CharField(max_length=21, blank=True)
     nombre = models.CharField(max_length=90, blank=True)
     ape_paterno = models.CharField(max_length=45, blank=True)
     ape_materno = models.CharField(max_length=45, blank=True)
     sexo = models.IntegerField(null=True, blank=True)
+    fecha_nac = models.DateField(null=True, blank=True)
     class Meta:
         db_table = u'tbl1_generales'
+
+class Tbl1Profesional(models.Model):
+    cedula = models.ForeignKey(Tbl1Generales, db_column='cedula')
+    universidad = models.CharField(max_length=80, blank=True)
+    faculad = models.CharField(max_length=80, blank=True)
+    class Meta:
+        db_table = u'tbl1_profesional'
 
 class Tbl2Direccion(models.Model):
     tbl2_id = models.IntegerField(primary_key=True)
@@ -93,7 +103,11 @@ class Tbl2Direccion(models.Model):
     cod_del_mun = models.ForeignKey(DelMun, db_column='cod_del_mun')
     colonia = models.CharField(max_length=135, blank=True)
     direccion = models.CharField(max_length=450, blank=True)
+    calle = models.CharField(max_length=450, blank=True)
+    num_int = models.IntegerField(null=True, blank=True)
+    num_ext = models.IntegerField(null=True, blank=True)
     cp = models.CharField(max_length=18, blank=True)
+    pais = models.CharField(max_length=18, blank=True)
     class Meta:
         db_table = u'tbl2_direccion'
 
@@ -102,6 +116,7 @@ class Tbl3Contacto(models.Model):
     cedula = models.ForeignKey(Tbl1Generales, db_column='cedula')
     tel_casa = models.CharField(max_length=45, blank=True)
     tel_oficina = models.CharField(max_length=45, blank=True)
+    fax = models.CharField(max_length=25, blank=True)
     tel_celular = models.CharField(max_length=45, blank=True)
     mail = models.CharField(max_length=45, blank=True)
     class Meta:

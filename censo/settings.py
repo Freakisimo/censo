@@ -23,7 +23,7 @@ DATABASES = {
 # Identificando la ruta del proyecto
 import os, django
 RUTA_PROYECTO = os.path.dirname(os.path.realpath(__file__))
-RUTA_RAIZ = os.path.join(RUTA_PROYECTO, '..')
+RUTA_RAIZ = os.path.join( os.path.dirname( __file__ ), '..' )
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -69,7 +69,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    os.path.join(RUTA_PROYECTO),
+    os.path.join('../../',RUTA_PROYECTO),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

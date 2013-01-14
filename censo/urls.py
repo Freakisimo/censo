@@ -5,10 +5,10 @@ from django.contrib import admin
 admin.autodiscover()
 
 # Esta url es para Dajaxice
-# from dajaxice.core import dajaxice_autodiscover, dajaxice_config
-# dajaxice_autodiscover()
+from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+dajaxice_autodiscover()
 
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns('',
     # Examples:
@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^perfil', 'captura.views.Perfil'),
 
     # URL para dajaxice
-    # url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
+    url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
 	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -30,4 +30,4 @@ urlpatterns = patterns('',
 	url(r'^admin/', include(admin.site.urls)),
 )
 
-urlpatterns += staticfiles_urlpatterns()
+# urlpatterns += staticfiles_urlpatterns()
